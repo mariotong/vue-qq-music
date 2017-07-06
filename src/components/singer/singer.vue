@@ -1,6 +1,7 @@
 <template>
   <div class="singer" ref="singer">
-     <list-view :data="singers" ref="list"></list-view>
+     <list-view @select="selectSinger" :data="singers" ref="list"></list-view>
+     <router-view></router-view>
   </div>
 </template>
 
@@ -29,6 +30,11 @@ export default {
         if (res.code === ERR_OK) {
           this.singers = this._normalizeSinger(res.data.list)
         }
+      })
+    },
+    selectSinger(singer) {
+      this.$router.push({
+        path: `/singer/${singer.id}`
       })
     },
     _normalizeSinger(list) {
