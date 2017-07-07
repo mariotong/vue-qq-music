@@ -1,15 +1,34 @@
 <template>
-  <div class="singerDetail">
-     歌手详情页
-  </div>
+  <transition name="slide">
+    <music-list :title="title" :bg-image="bgImage"></music-list>
+  </transition>
 </template>
 
 <script type="text/ecmascript-6">
+import MusicList from 'components/music-list/music-list'
+import { mapGetters } from 'vuex'
 export default {
   name: 'singerDetail',
   data () {
     return {
     }
+  },
+  computed: {
+    title() {
+      return this.singer.name
+    },
+    bgImage() {
+      return this.singer.avatar
+    },
+    ...mapGetters([
+      'singer'
+    ])
+  },
+  created() {
+    console.log(this.singer)
+  },
+  components: {
+    MusicList
   }
 }
 </script>
@@ -17,12 +36,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import "~common/stylus/variable"
-  .singerDetail
-    position: fixed
-    z-index: 100
-    top: 0
-    left: 0
-    bottom: 0
-    right: 0
-    background: #222
+  .slide-enter-active, .slide-leave-active
+    transition: all 0.3s
+  .slide-enter, .slide-leave-to
+    transform: translate3d(100%, 0, 0)
 </style>
