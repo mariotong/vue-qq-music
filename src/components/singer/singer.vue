@@ -40,7 +40,6 @@ export default {
       this.setSinger(singer)
     },
     _normalizeSinger(list) {
-      console.log(list)
       let map = {
         hot: {
           title: HOT_NAME,
