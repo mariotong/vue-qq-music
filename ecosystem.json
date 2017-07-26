@@ -1,0 +1,28 @@
+{
+  "apps": [
+    {
+      "name": "music",
+      "script": "build/dev-server.js",
+      "env": {
+        "COMMON_VARIABLE": "true"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    }
+  ],
+  "deploy": {
+    "production": {
+      "user": "zhenglei",
+      "host": ["59.110.163.253"],
+      "port": "22",
+      "ref": "origin/master",
+      "repo": "git@github.com:mariotong/vue-qq-music.git",
+      "path": "/www/website/production",
+      "ssh_options": "StrictHostKeyChecking=no",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
