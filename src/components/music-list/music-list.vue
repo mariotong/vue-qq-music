@@ -21,6 +21,7 @@ import Scroll from 'base/scroll/scroll'
 import SongList from 'base/song-list/song-list'
 import { prefixStyle } from 'common/js/dom'
 import { mapActions } from 'vuex'
+import { playlistMixin } from 'common/js/mixin'
 
 const RESERVED_HEIGHT = 40
 const transform = prefixStyle('transform')
@@ -28,6 +29,7 @@ const transform = prefixStyle('transform')
 
 export default {
   name: 'musicList',
+  mixins: [playlistMixin],
   props: {
     bgImage: {
       type: String,
@@ -48,6 +50,11 @@ export default {
     }
   },
   methods: {
+    handlePlaylist(playlist) {
+      const bottom = playlist.length > 0 ? '60px' : ''
+      this.$refs.list.$el.style.bottom = bottom
+      this.$refs.list.refresh()
+    },
     back() {
       this.$router.back()
     },
@@ -117,6 +124,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import "~common/stylus/variable"
+  @import "~common/stylus/mixin"
 
   .music-list
     position: fixed
@@ -146,6 +154,7 @@ export default {
       line-height: 40px
       font-size: $font-size-large
       color: $color-text
+      no-wrap()
     .bg-image
       position: relative
       width: 100%

@@ -28,6 +28,9 @@
                  <img class="image" :src="currentSong.image">
                </div>
              </div>
+             <div class="playing-lyric-wrapper">
+               <div class="playing-lyric">{{playingLyric}}</div>
+             </div>
            </div>
            <scroll class="middle-r" ref="lyricList" :data="currentLyric && currentLyric.lines">
              <div class="lyric-wrapper">
@@ -527,6 +530,16 @@ export default {
           width: 100%
           height: 0
           padding-top: 80%
+          .playing-lyric-wrapper
+            width: 80%
+            margin: 30px auto 0 auto
+            overflow: hidden
+            text-align: center
+            .playing-lyric
+              height: 20px
+              line-height: 20px
+              font-size: $font-size-medium
+              color: $color-text-l
           .cd-wrapper
             position: absolute
             left: 10%
