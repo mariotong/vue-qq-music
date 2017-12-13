@@ -13,7 +13,7 @@
   ],
   "deploy": {
     "production": {
-      "user": "zhenglei",
+      "user": "zl",
       "host": ["59.110.163.253"],
       "port": "22",
       "ref": "origin/master",
