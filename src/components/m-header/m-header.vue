@@ -1,7 +1,7 @@
 <template>
   <div class="m-header">
     <div class="icon"></div>
-    <h1 class="text">player</h1>
+    <h1 class="text">郑磊音乐盒</h1>
   </div>
 </template>
 
